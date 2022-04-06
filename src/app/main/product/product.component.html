@@ -7,40 +7,40 @@
                 <p class="text-blue"><i class="fas fa-copy text-aqua me-2"></i>Basic Information</p>
             </h6>
             <form class="row justify-content-between" [formGroup]="productForm" (ngSubmit)="onSubmit()">
-                <div class="col-4 mb-4">
+                <div class="col-md-3 mb-4">
                     <label for="warehouse" class="text-gray">Warehouse <span class="text-danger">*</span></label>
-                    <select formControlName="warehouse" id="warehouse" name="warehouse" class="d-block w-75"
-                    (change)="selectWarehouse($event)">
-                        <option value="warehouse 1">warehouse 1</option>
-                        <option value="warehouse 2">warehouse 2</option>
-                        <option value="warehouse 3">warehouse 3</option>
+                    <select formControlName="warehouse" requiered id="warehouse" name="warehouse" class="d-block w-100"
+                    (change)="selectWarehouse($event)" [(ngModel)]='ngSelectWarehouse'>
+                        <option value="warehouse1">Warehouse 1</option>
+                        <option value="warehouse2">Warehouse 2</option>
+                        <option value="warehouse3">Warehouse 3</option>
                     </select>
                 </div>
-                <div class="col-4 mb-4">
+                <div class="col-md-3 mb-4">
                     <label for="type" class="text-gray">Type <span class="text-danger">*</span></label>
-                    <select formControlName="type" id="type" name="warehouse" class="d-block w-75"
-                    (change)="selectType($event)">
-                        <option value="type 1">type 1</option>
-                        <option value="type 2">type 2</option>
-                        <option value="type 3">type 3</option>
+                    <select formControlName="type" [disabled]="!productForm.controls.warehouse.touched" requiered id="type" name="warehouse" class="d-block w-100"
+                    (change)="selectType($event)" [(ngModel)]='ngSelectType'>
+                        <option value="type1">Type 1</option>
+                        <option value="type2">Type 2</option>
+                        <option value="type3">Type 3</option>
                     </select>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4 mb-4">
                     <input mdbCheckbox formControlName="balance" name="balance" type="checkbox" id="balance">
                     <label for="balance" class="text-gray">Show zero balance</label>
                 </div>
-                <div class="col-4">
-                    <label for="classification" class="text-gray d-block">Product Classification</label>
-                    <input type="radio" formControlName="classification" name="classification" id="all" value="all" checked>
+                <div class="col-md-4 mb-4">
+                    <label for="classification" class="text-gray d-block mb-4">Product Classification</label>
+                    <input type="radio" aria-checked="true" [(ngModel)]="ngRadio" formControlName="classification" name="classification" id="all" value="all" checked>
                     <label for="all" class="text-gray me-5">All Product</label>
                     <input type="radio" formControlName="classification" name="classification" id="specific" value="specific">
                     <label for="specific" class="text-gray">Specific Product</label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8 mb-4">
                     <mat-label>Product <span class="text-danger">*</span></mat-label>
 
                     <mat-form-field class="example-chip-list" appearance="fill">
-                        <mat-chip-list #chipList aria-label="Product selection">
+                        <mat-chip-list #chipList aria-label="Product selection" formControlName="products">
                           <mat-chip
                             *ngFor="let product of products"
                             (removed)="remove(product)">
@@ -65,7 +65,7 @@
                       </mat-form-field>
                 </div>
 
-                <div class="col-1 ms-auto text-end">
+                <div class="col ms-auto text-end">
                     <input type="submit" name="search" id="search"
                         class="bg-aqua border-0 p-2 rounded text-white ms-auto" value="Search">
                 </div>

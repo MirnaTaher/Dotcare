@@ -1,6 +1,6 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
@@ -15,6 +15,9 @@ export interface Product {
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent {
+  ngSelectWarehouse="warehouse1";
+  ngSelectType="type1"
+  ngRadio ="all"
   // chip
   separatorKeysCodes: number[] = [ENTER, COMMA];
   prodCtrl = new FormControl();
@@ -38,11 +41,11 @@ export class ProductComponent {
   }
   initializeForm(): void {
     this.productForm = this.fb.group({
-      warehouse: '',
-      type: '',
-      balance: false,
-      classification: '',
-      products: this.prodCtrl,
+      warehouse: new FormControl({value: '', disabled: false}, Validators.required),
+      type: new FormControl({value: '', disabled: true}, Validators.required),
+      balance: new FormControl({value: false, disabled: true}),
+      classification: new FormControl({value: '', disabled: true}),
+      products:  new FormControl({value: this.products, disabled: true}),
     });
   }
   onSubmit(){
