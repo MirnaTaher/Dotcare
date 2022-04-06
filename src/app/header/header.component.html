@@ -1,0 +1,68 @@
+<header class="header">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-0 z-index-1301 position-relative">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Navbar brand -->
+            <a class="navbar-brand font-weight-bold" routerLink=""><span class="text-aqua">DOT</span><span
+                    class="text-blue">CARE</span></a>
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" (click)="basicNavbar.toggle()" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse z-index-1300" id="navbarSupportedContent" mdbCollapse #basicNavbar="mdbCollapse">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <form class="d-flex input-group input-group-sm">
+                        <input type="search" class="form-control d-block py-0 border-0"
+                            placeholder="Search For Patient (Name, Code, Phone Number)" aria-label="Search" />
+                        <button class="btn no-box-shadow border-start border-2 border-primary py-0" type="button">
+                            <i class="fas fa-search text-blue"></i>
+                        </button>
+                    </form>
+                </ul>
+
+                <div class="d-flex w-auto align-items-center">
+                    <div mdbDropdown class="dropdown pe-2">
+                        <a class="dropdown-toggle text-decoration-none text-blue" type="button" id="dropdownMenuButton"
+                            aria-expanded="false" mdbDropdownToggle>
+                            English
+                        </a>
+                        <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item text-blue" href="#">Arabic</a></li>
+                            <li><a class="dropdown-item text-blue" href="#">English</a></li>
+                        </ul>
+                    </div>
+                    <div class="d-flex w-auto align-items-center border-start border-primary ps-2 fs-small">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).webp" class="rounded-circle me-2"
+                            height="40" alt="" loading="lazy" />
+                        <p class="text-blue">Sabry ElSayed Farag Mahmoud</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Breadcrumb -->
+    <nav class="navbar navbar-expand-lg navbar-dark no-box-shadow z-index-1300 position-relative">
+        <div class="container-fluid">
+            <div class="bg-blue rounded w-100 p-0">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb align-items-center" [ngClass]="getRoute()">
+                        <li class="py-1 px-2 me-2 border-end border-light border-2 cursor-pointer" (click)="openModal()"><i class="fas fa-bars text-white"></i></li>
+                        <li class="breadcrumb-item"><a href=""><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item home" aria-current="page"><a routerLink="">Home</a></li>
+                        <li class="breadcrumb-item product"><a routerLink="/product">Product</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,82 @@
+<div class="container-fluid pb-3">
+    <h3 class="fs-4 text-black fw-bold">Product</h3>
+    <div class="bg-white py-0 rounded shadow-sm py-3">
+        <div class="container-prod">
+            <!-- form -->
+            <h6 class="border-bottom border-gray fw-bold mb-4 pb-2">
+                <p class="text-blue"><i class="fas fa-copy text-aqua me-2"></i>Basic Information</p>
+            </h6>
+            <form class="row justify-content-between" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                <div class="col-4 mb-4">
+                    <label for="warehouse" class="text-gray">Warehouse <span class="text-danger">*</span></label>
+                    <select formControlName="warehouse" id="warehouse" name="warehouse" class="d-block w-75"
+                    (change)="selectWarehouse($event)">
+                        <option value="warehouse 1">warehouse 1</option>
+                        <option value="warehouse 2">warehouse 2</option>
+                        <option value="warehouse 3">warehouse 3</option>
+                    </select>
+                </div>
+                <div class="col-4 mb-4">
+                    <label for="type" class="text-gray">Type <span class="text-danger">*</span></label>
+                    <select formControlName="type" id="type" name="warehouse" class="d-block w-75"
+                    (change)="selectType($event)">
+                        <option value="type 1">type 1</option>
+                        <option value="type 2">type 2</option>
+                        <option value="type 3">type 3</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <input mdbCheckbox formControlName="balance" name="balance" type="checkbox" id="balance">
+                    <label for="balance" class="text-gray">Show zero balance</label>
+                </div>
+                <div class="col-4">
+                    <label for="classification" class="text-gray d-block">Product Classification</label>
+                    <input type="radio" formControlName="classification" name="classification" id="all" value="all" checked>
+                    <label for="all" class="text-gray me-5">All Product</label>
+                    <input type="radio" formControlName="classification" name="classification" id="specific" value="specific">
+                    <label for="specific" class="text-gray">Specific Product</label>
+                </div>
+                <div class="col-8">
+                    <mat-label>Product <span class="text-danger">*</span></mat-label>
+
+                    <mat-form-field class="example-chip-list" appearance="fill">
+                        <mat-chip-list #chipList aria-label="Product selection">
+                          <mat-chip
+                            *ngFor="let product of products"
+                            (removed)="remove(product)">
+                            {{product}}
+                            <button matChipRemove>
+                              <mat-icon>x</mat-icon>
+                            </button>
+                          </mat-chip>
+                          <input
+                            #productInput
+                            [formControl]="prodCtrl"
+                            [matAutocomplete]="auto"
+                            [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                          <mat-option *ngFor="let product of filteredProducts | async" [value]="product">
+                            {{product}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                </div>
+
+                <div class="col-1 ms-auto text-end">
+                    <input type="submit" name="search" id="search"
+                        class="bg-aqua border-0 p-2 rounded text-white ms-auto" value="Search">
+                </div>
+            </form>
+            <!-- grid -->
+            <h6 class="border-bottom border-gray fw-bold mb-5 pb-2">
+                <p class="text-blue"><i class="fas fa-file-alt text-aqua me-2"></i>Product Details</p>
+            </h6>
+            <div class="pb-5">
+                <app-pagination></app-pagination>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '~@angular/material/theming';
+@include mat-core();
+//-------------------------------------------------------------------------------------------------------
+// DEFINING THE BASE THEMING
+//-------------------------------------------------------------------------------------------------------
+$primary: mat-palette($mat-blue-grey);
+$accent: mat-palette($mat-green);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+$dark-theme: mat-dark-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+p {
+    margin: 0;
+}
+
+.bg-blue {
+    background-color: #0357A8;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.bg-aqua {
+    background-color: #EFF7FF;
+}
+
+.text-aqua {
+    color: #47EAEE;
+}
+
+.text-blue {
+    color: #0357A8;
+}
+
+.no-box-shadow {
+    box-shadow: none !important;
+}
+
+.modal {
+    top: 4.5rem !important;
+    width: 100%;
+    padding-right: var(--mdb-gutter-x, 1.6rem);
+    padding-left: var(--mdb-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.modal-dialog {
+    max-width: 100% !important;
+}
+
+// .cdk-overlay-pane,.dropdown-menu{
+//     position: absolute;
+//     z-index: 1301 !important;
+// }
+div.cdk-overlay-container .cdk-overlay-pane {
+    position: absolute;
+    z-index: 1302;
+}

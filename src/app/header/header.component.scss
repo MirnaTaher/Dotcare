@@ -1,0 +1,56 @@
+.header{
+
+    form{
+        input{
+            font-size: 0.75rem;
+            width: 23rem;
+            max-width: 80%;
+        }
+        input, button{
+            background-color: #E8F0F7;
+            line-height: 1;
+        }
+    }
+    
+    .breadcrumb-item {
+        a {
+            color: white !important;
+        }
+    }
+    .breadcrumb-item + .breadcrumb-item::before {
+        content: ">";
+        color: white;
+        opacity: 0.5;
+    }
+    .cdk-overlay-pane,.dropdown-menu{
+    position: absolute;
+    z-index: 1301 !important;
+}
+}
+
+.home-active{
+    .product{
+        display: none;
+    }
+}
+.product-active{
+    .product{
+        display: inline-block;
+    }
+    .home{
+        opacity: 0.5;
+    }
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.fs-small{
+    font-size: 0.8rem;
+}
+
+.z-index-1300{
+    z-index: 1300;
+}
+.z-index-1301{
+    z-index: 1301;
+}
